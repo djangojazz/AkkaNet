@@ -10,6 +10,7 @@ namespace AkkaNet
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
