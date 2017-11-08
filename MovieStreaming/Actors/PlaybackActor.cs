@@ -4,18 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Akka.Actor;
+using MovieStreaming.Messages;
 
 namespace MovieStreaming.Actors
 {
-    public class PlaybackActor : UntypedActor
+    public class PlaybackActor : ReceiveActor
     {
         public PlaybackActor()
         {
             Console.WriteLine("Creating a PlaybackActor");
+
+            Receive<PlayMovieMessage>(message => HandlePlayMovie(message), message => message.UserId == 42);
         }
 
-        protected override void OnReceive(object message)
+        private void HandlePlayMovie(PlayMovieMessage message)
         {
+            Console.WriteLine("Received movie title " + message.MovieTitle);
+            Console.WriteLine("Received user Id " + message.UserId);
         }
     }
 }
