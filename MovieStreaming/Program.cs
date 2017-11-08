@@ -1,14 +1,13 @@
 ﻿using Akka.Actor;
 
-namespace AkkaNet
+namespace MovieStreaming
 {
-    private static ActorSystem 
-
     class Program
     {
+        private static ActorSystem MovieStreamingActorSystem;
+
         static void Main(string[] args)
         {
-
         }
     }
 }
