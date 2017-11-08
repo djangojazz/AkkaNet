@@ -1,4 +1,5 @@
-﻿using Akka.Actor;
+﻿using System;
+using Akka.Actor;
 
 namespace MovieStreaming
 {
@@ -8,6 +9,12 @@ namespace MovieStreaming
 
         static void Main(string[] args)
         {
+            MovieStreamingActorSystem = ActorSystem.Create("MovieStreamingActorSystem");
+
+            
+            Console.ReadLine();
+
+            MovieStreamingActorSystem.Shutdown();
         }
     }
 }
