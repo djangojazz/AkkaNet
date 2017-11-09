@@ -19,11 +19,20 @@ namespace MovieStreaming
             IActorRef playbackActorRef = MovieStreamingActorSystem.ActorOf(playbackActorProps, "PlaybackActor");
 
             playbackActorRef.Tell(new PlayMovieMessage("Akka.NET: The Movie", 42));
-            
+            playbackActorRef.Tell(new PlayMovieMessage("Partial Recall", 99));
+            playbackActorRef.Tell(new PlayMovieMessage("Boolean Lies", 77));
+            playbackActorRef.Tell(new PlayMovieMessage("Codenan the Destroyer", 1));
 
-            Console.ReadLine();
+            //Press any key to start shutdown of service
+            Console.ReadKey();
 
+            //Tell actor system to shutdown
             MovieStreamingActorSystem.Shutdown();
+            //Wait for it to shutdown
+            MovieStreamingActorSystem.AwaitTermination();
+            Console.WriteLine("Actor system shutdown");
+
+            Console.ReadKey();
         }
     }
 }
