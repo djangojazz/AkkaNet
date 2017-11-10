@@ -25,5 +25,14 @@ namespace MovieStreaming
             Console.WriteLine(message);
             Console.ForegroundColor = beforeColor;
         }
+
+        public static void WriteLineRed(string message)
+        {
+            var beforeColor = Console.ForegroundColor;
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ForegroundColor = beforeColor;
+        }
     }
 }

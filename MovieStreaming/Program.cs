@@ -14,16 +14,25 @@ namespace MovieStreaming
             MovieStreamingActorSystem = ActorSystem.Create("MovieStreamingActorSystem");
             Console.WriteLine("Actor system created");
 
-            Props playbackActorProps = Props.Create<PlaybackActor>();
+            Props playbackActorProps = Props.Create<UserActor>();
 
-            IActorRef playbackActorRef = MovieStreamingActorSystem.ActorOf(playbackActorProps, "PlaybackActor");
+            IActorRef userActorRef = MovieStreamingActorSystem.ActorOf(playbackActorProps, "UserActor");
 
-            playbackActorRef.Tell(new PlayMovieMessage("Akka.NET: The Movie", 42));
-            playbackActorRef.Tell(new PlayMovieMessage("Partial Recall", 99));
-            playbackActorRef.Tell(new PlayMovieMessage("Boolean Lies", 77));
-            playbackActorRef.Tell(new PlayMovieMessage("Codenan the Destroyer", 1));
+            Console.ReadKey();
+            Console.WriteLine("Sending a PlayMovieMessage (Codenan the Destroyer)");
+            userActorRef.Tell(new PlayMovieMessage("Codenan the Destroyer", 42));
 
-            playbackActorRef.Tell(PoisonPill.Instance);
+            Console.ReadKey();
+            Console.WriteLine("Sending a PlayMovieMessage (Boolean Lies)");
+            userActorRef.Tell(new PlayMovieMessage("Boolean Lies", 42));
+
+            Console.ReadKey();
+            Console.WriteLine("Sending a StopMovieMessage");
+            userActorRef.Tell(new StopMovieMessage());
+
+            Console.ReadKey();
+            Console.WriteLine("Sending a StopMovieMessage");
+            userActorRef.Tell(new StopMovieMessage());
 
             //Press any key to start shutdown of service
             Console.ReadKey();
