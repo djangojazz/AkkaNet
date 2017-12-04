@@ -8,7 +8,7 @@ namespace MovieStreaming.Actors
     {
         public PlaybackStatisticsActor()
         {
-            
+            Context.ActorOf(Props.Create<MoviePlayCounterActor>(), "MoviePlayCounter");
         }
 
     
